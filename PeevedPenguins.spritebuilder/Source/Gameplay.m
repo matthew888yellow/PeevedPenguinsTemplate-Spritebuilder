@@ -44,7 +44,8 @@ static const float MIN_SPEED = 5.f;
 -(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     CGPoint touchLocation = [touch locationInNode:_contentNode];
-    
+    _currentPenguin = nil;
+
     // start catapult dragging when a touch inside of the catapult arm occurs
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
     {
