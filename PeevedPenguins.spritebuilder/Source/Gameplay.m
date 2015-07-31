@@ -161,6 +161,7 @@ static const float MIN_SPEED = 5.f;
 
 - (void)update:(CCTime)delta
 {
+    NSLog(@"update");
     if (_currentPenguin.launched)
     {
         // if speed is below minimum speed, assume this attempt is over
