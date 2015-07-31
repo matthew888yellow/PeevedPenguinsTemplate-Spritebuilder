@@ -51,6 +51,7 @@ static const float MIN_SPEED = 5.f;
         _mouseJointNode.position = touchLocation;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:8000.f damping:150.f];
         _currentPenguin = (Penguin*)[CCBReader load:@"Penguin"];
+        NSLog(@"new penguin");
         CGPoint penguinPosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
         // transform the world position to the node space to which the penguin will be added (_physicsNode)
         _currentPenguin.position = [_physicsNode convertToNodeSpace:penguinPosition];
