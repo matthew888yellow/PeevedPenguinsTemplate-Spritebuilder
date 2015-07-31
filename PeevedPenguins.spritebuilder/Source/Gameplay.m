@@ -77,6 +77,18 @@ static const float MIN_SPEED = 5.f;
     _mouseJointNode.position = touchLocation;
 }
 
+-(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches end, meaning the user releases their finger, release the catapult
+    [self releaseCatapult];
+}
+
+-(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches are cancelled, meaning the user drags their finger off the screen or onto something else, release the catapult
+    [self releaseCatapult];
+}
+
 - (void)releaseCatapult {
     if (_mouseJoint != nil)
     {
@@ -97,19 +109,9 @@ static const float MIN_SPEED = 5.f;
     }
 }
 
--(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // when touches end, meaning the user releases their finger, release the catapult
-    [self releaseCatapult];
-}
-
--(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // when touches are cancelled, meaning the user drags their finger off the screen or onto something else, release the catapult
-    [self releaseCatapult];
-}
-
 - (void)launchPenguin {
+    NSLOG(@"LAUNCHED");
+    
     // loads the Penguin.ccb we have set up in Spritebuilder
     CCNode* penguin = [CCBReader load:@"Penguin"];
     // position the penguin at the bowl of the catapult
