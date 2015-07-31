@@ -47,6 +47,8 @@ static const float MIN_SPEED = 5.f;
     _currentPenguin = nil;
     [_contentNode stopAction:_followPenguin];
     _followPenguin = nil;
+    CCActionMoveTo *actionMoveTo = [CCActionMoveTo actionWithDuration:1.f position:ccp(0, 0)];
+    [_contentNode runAction:actionMoveTo];
     
     // start catapult dragging when a touch inside of the catapult arm occurs
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
@@ -165,7 +167,6 @@ static const float MIN_SPEED = 5.f;
 - (void)nextAttempt {
     [_contentNode stopAction:_followPenguin];
     _currentPenguin = nil;
-    NSLog(@"nextAttempt");
     CCActionMoveTo *actionMoveTo = [CCActionMoveTo actionWithDuration:1.f position:ccp(0, 0)];
     [_contentNode runAction:actionMoveTo];
 }
