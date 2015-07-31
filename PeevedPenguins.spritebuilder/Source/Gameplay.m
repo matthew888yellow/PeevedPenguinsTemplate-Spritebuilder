@@ -107,10 +107,9 @@ static const float MIN_SPEED = 5.f;
         _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
         [_contentNode runAction:_followPenguin];
         
-        NSLog(@"RELEASED");
+        _currentPenguin.launched = TRUE;
     }
 }
-
 
 - (void)retry {
     // reload this level
