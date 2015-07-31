@@ -50,7 +50,7 @@
         _mouseJointNode.position = touchLocation;
         
         // setup a spring joint between the mouseJointNode and the catapultArm
-        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:30000.f damping:150.f];
+        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:8000.f damping:150.f];
         
         // create a penguin from the ccb-file
         _currentPenguin = [CCBReader load:@"Penguin"];
@@ -144,6 +144,16 @@
 }
 
 - (void)sealRemoved:(CCNode *)seal {
+    // load particle effect
+    CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"SealExplosion"];
+    // make the particle effect clean itself up, once it is completed
+    explosion.autoRemoveOnFinish = TRUE;
+    // place the particle effect on the seals position
+    explosion.position = seal.position;
+    // add the particle effect to the same node the seal is on
+    [seal.parent addChild:explosion];
+    
+    // finally, remove the destroyed seal
     [seal removeFromParent];
 }
 
