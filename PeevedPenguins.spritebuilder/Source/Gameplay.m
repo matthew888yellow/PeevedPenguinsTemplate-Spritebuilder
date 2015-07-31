@@ -110,7 +110,7 @@ static const float MIN_SPEED = 5.f;
 }
 
 - (void)launchPenguin {
-    NSLOG(@"LAUNCHED");
+    NSLog(@"LAUNCHED");
     
     // loads the Penguin.ccb we have set up in Spritebuilder
     CCNode* penguin = [CCBReader load:@"Penguin"];
